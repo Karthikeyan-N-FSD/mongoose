@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const URL = "mongodb://localhost:27017/fsd13";
+const dotenv = require("dotenv").config();
+
+
+const URL = process.env.DB || "mongodb://127.0.0.1:27017/fsd13";
 
 mongoose.connect(URL);
+console.log("Connected to Mongoose Atlas");
 
 const productSchema = new mongoose.Schema({
     title: String,
